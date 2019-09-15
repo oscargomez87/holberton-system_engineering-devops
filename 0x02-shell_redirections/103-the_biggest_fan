@@ -1,2 +1,2 @@
 #!/bin/bash
-head -n11 < <(cut -d " " -f3< <(tr -s ' ' < <(sort -rn < <(uniq -c < <(sort) < <(cut -f1) < <(tail -n +2)))))
+head -n11 < <(cut -d " " -f3< <(tr -s ' ' < <(sort -rn < <(uniq -c < <(sort < <(cut -f1 < <(tail -n +2)))))))
