@@ -1,0 +1,2 @@
+#!/bin/bash
+uniq -c < <(sort) < <(cut -f1) | sort -rn | head -n11 | cut -d " " -f6
