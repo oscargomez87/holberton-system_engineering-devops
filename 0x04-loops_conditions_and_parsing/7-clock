@@ -2,11 +2,15 @@
 # Displays the time for 12 hours and 59 minutes:
 # Display hours from 0 to 12
 # Display minutes from 1 to 59
-for h in {0..12}
+h='0'
+while [ $h -le 12 ]
 do
   echo "Hour: ${h}"
-  for m in {1..59}
+  h=$((h + 1))
+  m='1'
+  while [ $m -lt 60 ]
   do
     echo $m
+    m=$((m + 1))
   done
 done
