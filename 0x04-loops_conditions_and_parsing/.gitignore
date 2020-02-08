@@ -1,4 +1,5 @@
 *
 ![0-9]*
+!apache-access.log
 !README.md
 !.gitignore
