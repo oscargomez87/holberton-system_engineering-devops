@@ -15,18 +15,18 @@ case $1 in
   "start")
     echo "manage_my_process started"
     $SCRIPT & disown
-    echo $! > $FILE
+    echo "$!" > $FILE
     ;;
   "stop")
     echo "manage_my_process stopped"
-    kill $(cat "$FILE")
+    kill "$(cat "$FILE")"
     rm $FILE
     ;;
   "restart")
     echo "manage_my_process restarted"
-    kill $(cat "$FILE")
+    kill "$(cat "$FILE")"
     rm $FILE
     $SCRIPT & disown
-    echo $! > $FILE
+    echo "$!" > $FILE
     ;;
 esac
