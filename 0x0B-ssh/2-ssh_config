@@ -1,0 +1,2 @@
+PubKeyAuthentication yes
+IdentityFile ~/.ssh/holberton
