@@ -1,2 +1,2 @@
-PubKeyAuthentication yes
 IdentityFile ~/.ssh/holberton
+PasswordAuthentication no
