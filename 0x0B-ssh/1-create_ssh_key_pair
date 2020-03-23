@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#Creates a ssh key pair with specific information
+ssh-keygen -b 4096 -f "holberton" -N "betty"
