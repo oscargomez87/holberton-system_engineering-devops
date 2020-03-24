@@ -1,3 +1,5 @@
+#Creates a file called holberton in /tmp
+
 file { 'holberton':
   ensure  => file,
   path    => '/tmp/holberton',
