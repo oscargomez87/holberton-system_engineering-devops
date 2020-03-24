@@ -18,3 +18,4 @@ STR="server {
         }
 }"
 echo "$STR" > /etc/nginx/sites-available/default
+service nginx restart
