@@ -1,3 +1,5 @@
+# Configures ssh client to use specific pvkey and not use password
+
 include stdlib
 
 file_line { 'Turn off passwd auth':
