@@ -2,7 +2,7 @@
 
 file_line { 'Turn off passwd auth':
   ensure => present,
-  path   => '/etc/ssh/sshd_config',
+  path   => '/etc/ssh/ssh_config',
   match  => '^PasswordAuthentication',
   line   => 'PasswordAuthentication no',
 }
