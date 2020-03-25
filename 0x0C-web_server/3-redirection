@@ -1,21 +1,5 @@
 #!/usr/bin/env bash
 # Configure nginx to return 301 on /redirect_me
-STR="server {
-        listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
-
-        root /usr/share/nginx/html;
-        index index.html index.htm;
-
-        server_name localhost;
-
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
-
-        location /redirect_me {
-                return 301;
-        }
-}"
-echo "$STR" > /etc/nginx/sites-available/default
+STR="location /redirect_me {\n\t\treturn 301;\n\t}"
+sed -i 's,# SSL configuration,'"$STR"',' /etc/nginx/sites-enabled/default
 service nginx restart
