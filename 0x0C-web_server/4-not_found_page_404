@@ -1,24 +1,10 @@
 #!/usr/bin/env bash
 # Configure nginx to return 301 on /redirect_me
-STR="server {
-        listen 80 default_server;
-        listen [::]:80 default_server ipv6only=on;
-
-        root /usr/share/nginx/html;
-        index index.html index.htm;
-
-        server_name localhost;
-
-        location / {
-                try_files \$uri \$uri/ =404;
-        }
-
-        location /redirect_me {
-                return 301;
-        }
-
-        error_page 404 /404.html;
-}"
-echo "$STR" > /etc/nginx/sites-available/default
-echo "Ceci n'est pas une page" > /usr/share/nginx/html/404.html
-service nginx restart
+apt-get update
+apt-get install nginx -y
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
+STR="location /redirect_me {\n\t\treturn 301;\n\t}"
+sed -i 's,# SSL configuration,'"$STR"',' /etc/nginx/sites-enabled/default
+sed -i 's,# pass.*,error_page 404 /404.html;,' /etc/nginx/sites-enabled/default
+echo "Ceci n'est pas une page" > /var/www/html/404.html
+service nginx start
