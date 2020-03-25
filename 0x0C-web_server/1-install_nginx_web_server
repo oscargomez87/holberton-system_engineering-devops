@@ -2,7 +2,5 @@
 # Sets up nginx as a web server
 apt-get update -y
 apt-get install nginx -y
-rm /var/www/html/index.nginx-debian.html
-touch /var/www/html/index.html
-echo "Holberton School" > /var/www/html/index.html
+echo "Holberton School" > /usr/share/nginx/html/index.html
 service nginx start
