@@ -1,10 +1,11 @@
 #!/usr/bin/env bash
 # Configure nginx to return 301 on /redirect_me
+RED="location /redirect_me {\n\t\treturn 301;\n\t}"
+NTF="error_page 404 /404.html;\n\tlocation = /404.html {\n\t\troot /var/www/html;\n\t\tinternal;\n\t}"
 apt-get update
 apt-get install nginx -y
 echo "Holberton School" > /var/www/html/index.nginx-debian.html
-STR="location /redirect_me {\n\t\treturn 301;\n\t}"
-sed -i 's,# SSL configuration,'"$STR"',' /etc/nginx/sites-enabled/default
-sed -i 's,# pass.*,error_page 404 /404.html;,' /etc/nginx/sites-enabled/default
+sed -i 's,# SSL configuration,'"$RED"',' /etc/nginx/sites-enabled/default
+sed -i 's,# pass.*,'"$NTF"',' /etc/nginx/sites-enabled/default
 echo "Ceci n'est pas une page" > /var/www/html/404.html
 service nginx start
