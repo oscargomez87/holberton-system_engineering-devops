@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 # Configure nginx to return 301 on /redirect_me
+apt-get update
+apt-get install nginx -y
+echo "Holberton School" > /var/www/html/index.nginx-debian.html
 STR="location /redirect_me {\n\t\treturn 301;\n\t}"
 sed -i 's,# SSL configuration,'"$STR"',' /etc/nginx/sites-enabled/default
-service nginx restart
+service nginx start
