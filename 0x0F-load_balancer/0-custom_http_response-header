@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# Configures custom header on nginx
+STR="\t\tadd_header X-Served-By \$hostname;"
+sed -i '0,/location \/ {/s//&'"\n$STR"'/' /etc/nginx/sites-enabled/default
+service nginx restart
