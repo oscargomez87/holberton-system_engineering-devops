@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#Display information about subdomains.
+
+domain(){
+  declare -a arr=("www" "lb-01" "web-01" "web-02")
+  for i in "${arr[@]}"
+  do
+    SCP=$(dig +short "$i.$1")
+    RCD=$(dig +noall +answer "$i.$1" | awk '{print $4}')
+    echo -e "The subdomain $i is a $RCD record that points to $SCP"
+  done
+}
+
+sdomain(){
+  SCP=$(dig +short "$2.$1")
+  RCD=$(dig +noall +answer "$2.$1" | awk '{print $4}')
+  echo -e "The subdomain $2 is a $RCD record that points to $SCP"
+}
+if [ "$#" -gt 1 ]
+then
+  sdomain "$1" "$2"
+elif [ "$#" -eq 1 ]
+then
+  domain "$1"
+fi
