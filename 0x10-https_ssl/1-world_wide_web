@@ -7,14 +7,14 @@ domain(){
   do
     SCP=$(dig +short "$i.$1")
     RCD=$(dig +noall +answer "$i.$1" | awk '{print $4}')
-    echo -e "The subdomain $i is a $RCD record that points to $SCP"
+    echo -e "The subdomain $i is a $RCD record and points to $SCP"
   done
 }
 
 sdomain(){
   SCP=$(dig +short "$2.$1")
   RCD=$(dig +noall +answer "$2.$1" | awk '{print $4}')
-  echo -e "The subdomain $2 is a $RCD record that points to $SCP"
+  echo -e "The subdomain $2 is a $RCD record and points to $SCP"
 }
 if [ "$#" -gt 1 ]
 then
