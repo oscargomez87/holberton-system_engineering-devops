@@ -5,6 +5,7 @@
     Parameters:
         id = id of employee to find todos
 """
+import csv
 import requests
 from sys import argv
 
@@ -20,9 +21,8 @@ if __name__ == '__main__':
     emp_uname = res_user.json()[0]['username']
     csv_file = '{}.csv'.format(emp_id)
     with open(csv_file, 'w') as f:
+        csv_writer = csv.writer(f, delimiter=',', quoting=csv.QUOTE_ALL)
         for todos in res_todos.json():
-            user_id = todos['userId']
-            todo_state = todos['completed']
-            todo_title = todos['title']
-            f.write('"{}","{}","{}","{}"\n'
-                    .format(user_id, emp_uname, todo_state, todo_title))
+            data = [todos['userId'], emp_uname,
+                    todos['completed'], todos['title']]
+            csv_writer.writerow(data)
