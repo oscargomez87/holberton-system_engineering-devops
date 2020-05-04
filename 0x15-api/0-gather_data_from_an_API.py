@@ -10,7 +10,7 @@ from sys import argv
 
 
 if __name__ == '__main__':
-    emp_id = int(argv[1])
+    emp_id = argv[1]
     url_users = 'https://jsonplaceholder.typicode.com/users/{}/'.format(emp_id)
     url_todos = url_users + 'todos/'
     todos_num_done = 0
