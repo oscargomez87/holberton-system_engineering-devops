@@ -25,4 +25,4 @@ if __name__ == '__main__':
     print('Employee {} is done with tasks({}/{}):'
           .format(employee_name, todos_num_done, len(res_todos.json())))
     for task in todos_task_done:
-        print('\t{}'.format(task))
+        print('\t {}'.format(task))
