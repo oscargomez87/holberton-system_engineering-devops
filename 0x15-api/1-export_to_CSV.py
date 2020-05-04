@@ -21,5 +21,8 @@ if __name__ == '__main__':
     csv_file = '{}.csv'.format(emp_id)
     with open(csv_file, 'w') as f:
         for todos in res_todos.json():
+            user_id = todos['userId']
+            todo_state = todos['completed']
+            todo_title = todos['title']
             f.write('"{}","{}","{}","{}"\n'
-                    .format(todos['userId'], emp_uname, todos['completed'], todos['title']))
+                    .format(user_id, emp_uname, todo_state, todo_title))
